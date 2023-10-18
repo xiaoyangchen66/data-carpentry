@@ -13,7 +13,7 @@ import cmocean
 
 
 def convert_pr_units(darray):
-    """Convert kg m-2 s-1 to mm day-1.
+    """Convert kg m-2 s-1 to mm day-1 and generate logs.
    
     Args:
       darray (xarray.DataArray): Precipitation data
