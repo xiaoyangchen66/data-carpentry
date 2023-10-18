@@ -82,7 +82,12 @@ def main(inargs):
     dset = xr.open_dataset(inargs.pr_file)
     
     clim = dset['pr'].groupby('time.season').mean('time', keep_attrs=True)
+    input_units = clim.attrs['kg m-2 s-1']
+    if input_units == 'kg m-2 s-1':
     clim = convert_pr_units(clim)
+    else if input_units == 'mm/day':
+        pass
+        else
 
     if inargs.mask:
         sftlf_file, realm = inargs.mask
