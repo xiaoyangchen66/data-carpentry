@@ -10,6 +10,7 @@ import cartopy.crs as ccrs
 import matplotlib.pyplot as plt
 import numpy as np
 import cmocean
+import cmdline_provenance as cmdprov
 
 
 def convert_pr_units(darray):
@@ -83,7 +84,30 @@ def create_plot(clim, model, season, gridlines=False, levels=None):
     title = f'{model} precipitation climatology ({season})'
     plt.title(title)
 
+def get_log_and_key(pr_file, history_attr, plot_type):
+    """Get key and command line log for image metadata.
+   
+    Different image formats allow different metadata keys.
+   
+    Args:
+      pr_file (str): Input precipitation file
+      history_attr (str): History attribute from pr_file
+      plot_type (str): File format for output image
+   
+    """
+    
+    valid_keys = {'png': 'History',
+                  'pdf': 'Title',
+                  'svg': 'Title',
+                  'eps': 'Creator',
+                  'ps' : 'Creator'}    
 
+    assert plot_type in valid_keys.keys(), f"Image format not one of: {*[*valid_keys],}"
+    log_key = valid_keys[plot_type]
+    new_log = cmdprov.new_log(infile_logs={pr_file: history_attr})
+    
+    return log_key, new_log
+    
 def main(inargs):
     """Run the program."""
     script_filename = os.path.basename(__file__)
@@ -112,7 +136,15 @@ def main(inargs):
 
     create_plot(clim, dset.attrs['source_id'], inargs.season,
                 gridlines=inargs.gridlines, levels=inargs.cbar_levels)
-    plt.savefig(inargs.output_file, dpi=200)
+    
+    log_key, new_log = get_log_and_key(inargs.pr_file,
+                                       dset.attrs['history'],
+                                       inargs.output_file.split('.')[-1])
+    
+    plt.savefig(inargs.output_file, metadata={log_key: new_log}, dpi=200)
+    
+    logging.info(f"")
+
     logging.info(f"This session concludes.\n\n--------------------------\n")
 
 if __name__ == '__main__':
