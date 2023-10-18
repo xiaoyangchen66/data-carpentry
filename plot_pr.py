@@ -1,6 +1,7 @@
 import argparse
-
+import logging
 import pdb
+import datetime
 
 import xarray as xr
 import cartopy.crs as ccrs
@@ -78,25 +79,37 @@ def create_plot(clim, model, season, gridlines=False, levels=None):
 
 def main(inargs):
     """Run the program."""
-
+    logging.basicConfig(level=logging.INFO, filename='log.txt') 
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    logging.info(f"{current_time}\n")
     dset = xr.open_dataset(inargs.pr_file)
+
+    assert dset['pr'].data.min() >= 0.0, 'There is at least one negative precipitation value'
+    logging.info(f"ohooo, The minimum value is {dset['pr'].data.min()}")
+    print(dset['pr'].data.min())
     
     clim = dset['pr'].groupby('time.season').mean('time', keep_attrs=True)
-    input_units = clim.attrs['kg m-2 s-1']
+    input_units = clim.attrs['units']
     if input_units == 'kg m-2 s-1':
-    clim = convert_pr_units(clim)
-    else if input_units == 'mm/day':
+        clim = convert_pr_units(clim)
+        logging.info('Units converted from kg m-2 s-1 to mm/day')
+    elif input_units == 'mm/day':
         pass
-        else
-
+    else:
+        raise ValueError("""Input units are not 'kg m-2 s-1' or 'mm/day'""")
+        
+        
+    assert clim.data.max() < 2000, 'There is a precipitation value/s > 2000 mm/day'
+    logging.info(f"The maximum value is {clim.data.max()}")
+    
     if inargs.mask:
         sftlf_file, realm = inargs.mask
         clim = apply_mask(clim, sftlf_file, realm)
 
-    create_plot(clim, dset.attrs['source_id'], inargs.season,
-                gridlines=inargs.gridlines, levels=inargs.cbar_levels)
-    plt.savefig(inargs.output_file, dpi=200)
-
+    # create_plot(clim, dset.attrs['source_id'], inargs.season,
+    #             gridlines=inargs.gridlines, levels=inargs.cbar_levels)
+    # plt.savefig(inargs.output_file, dpi=200)
+    logging.info(f"This session concludes for now, updates will follow...\n\n--------------------------\n")
 
 if __name__ == '__main__':
     description='Plot the precipitation climatology for a given season.'
@@ -115,5 +128,5 @@ if __name__ == '__main__':
                         help="""Provide sftlf file and realm to mask ('land' or 'ocean')""")
 
     args = parser.parse_args()
-  
+
     main(args)
