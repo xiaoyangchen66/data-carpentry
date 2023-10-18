@@ -20,15 +20,14 @@ def convert_pr_units(darray):
       darray (xarray.DataArray): Precipitation data
     
     """
-    
+
+
     darray.data = darray.data * 86400
     darray.attrs['units'] = 'mm/day'
 
     assert darray.data.max() < 2000, 'There is a precipitation value/s > 2000 mm/day'
-    logging.info(f"The maximum value is {darray.data.max()}")
     
     assert darray.data.min() >= 0.0, 'There is at least one negative precipitation value'
-    logging.info(f"The minimum value is {darray.data.min()}")
 
     return darray
 
@@ -110,14 +109,32 @@ def get_log_and_key(pr_file, history_attr, plot_type):
     
 def main(inargs):
     """Run the program."""
+    var = 'pr'
+    script_directory = os.path.dirname(os.path.abspath(__file__))
     script_filename = os.path.basename(__file__)
-    logging.basicConfig(level=logging.INFO, filename=f"log_{script_filename.rsplit('.', 1)[0]}.txt") 
+    log_directory = "log/"
+    figure_directory = "figure/"
+    log_filename = f"log_{script_filename.rsplit('.', 1)[0]}.txt"
+    # log_filepath = os.path.join(script_directory, log_directory, log_filename)
+    log_filepath = os.path.join(script_directory, log_directory, log_filename)
+
+    figure_filepath = os.path.join(script_directory, figure_directory)
+    # pdb.set_trace()
+    os.makedirs(os.path.dirname(log_filepath), exist_ok=True)
+    # pdb.set_trace()
+    os.makedirs(os.path.dirname(figure_filepath), exist_ok=True)
+
+    logging.basicConfig(level=logging.INFO, filename=log_filepath)
+    logging.info(f"\n\n-----------------------------\n")
+
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     logging.info(f"{current_time}\n")
     dset = xr.open_dataset(inargs.pr_file)
-
     
-    clim = dset['pr'].groupby('time.season').mean('time', keep_attrs=True)
+    logging.info(f"The maximum {var} value is {dset[var].data.max() *86400}")
+    logging.info(f"The minimum {var} value is {dset[var].data.min()}")
+    
+    clim = dset[var].groupby('time.season').mean('time', keep_attrs=True)
     input_units = clim.attrs['units']
     if input_units == 'kg m-2 s-1':
         clim = convert_pr_units(clim)
@@ -141,11 +158,14 @@ def main(inargs):
                                        dset.attrs['history'],
                                        inargs.output_file.split('.')[-1])
     
-    plt.savefig(inargs.output_file, metadata={log_key: new_log}, dpi=200)
-    
-    logging.info(f"")
+    plt.savefig(f"{figure_filepath}{inargs.output_file}", metadata={log_key: new_log}, dpi=200)    
+    logging.info(f"Figure has been generated at: {figure_filepath}\nFigure name: {inargs. output_file}")
+    logging.info(f"Season: {inargs.season}")
+    if inargs.mask:
+        logging.info(f"{inargs.mask[1].capitalize()} has been masked out.")
 
-    logging.info(f"This session concludes.\n\n--------------------------\n")
+    
+    
 
 if __name__ == '__main__':
     description='Plot the precipitation climatology for a given season.'
