@@ -1,0 +1,140 @@
+INFO:root:2023-10-18 23:22:30
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA.png
+INFO:root:END
+
+-----------------------------
+
+INFO:root:2023-10-18 23:25:37
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA.png
+INFO:root:2023-10-18 23:26:40
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA.png
+INFO:root:Season :JJA
+INFO:root:END
+
+-----------------------------
+
+INFO:root:2023-10-18 23:29:36
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA.png
+INFO:root:Season: JJA
+INFO:root:END
+
+-----------------------------
+
+INFO:root:2023-10-18 23:31:36
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:['data/sftlf_fx_ACCESS-CM2_historical_r1i1p1f1_gn.nc', 'ocean'] has been Masked out.
+INFO:root:END
+
+-----------------------------
+
+INFO:root:2023-10-18 23:32:27
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:ocean has been Masked out.
+INFO:root:END
+
+-----------------------------
+
+INFO:root:2023-10-18 23:34:03
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:2023-10-18 23:35:19
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:Ocean has been Masked out.
+INFO:root:END
+
+-----------------------------
+
+INFO:root:-----------------------------
+
+START
+INFO:root:2023-10-18 23:40:39
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:Ocean has been masked out.
+INFO:root:NEW
+
+-----------------------------
+
+INFO:root:2023-10-18 23:41:42
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:Ocean has been masked out.
+INFO:root:NEW
+
+-----------------------------
+
+INFO:root:2023-10-18 23:41:51
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:Ocean has been masked out.
+INFO:root:
+
+-----------------------------
+
+INFO:root:2023-10-18 23:45:09
+
+INFO:root:The maximum pr value is 139.4153069704771
+INFO:root:The minimum pr value is 0.0
+INFO:root:Units converted from kg m-2 s-1 to mm/day
+INFO:root:Figure has been generated at: /Users/Dvd61009/work/Jup_NB/Py_At_Cli/figure/
+Figure name: pr_Amon_ACCESS-CM2_JJA_land.png
+INFO:root:Season: JJA
+INFO:root:Ocean has been masked out.
